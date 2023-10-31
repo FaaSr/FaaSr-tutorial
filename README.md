@@ -57,6 +57,16 @@ Then install FaaSr:
 devtools::install_github('FaaSr/FaaSr-package',ref='main',force=TRUE)
 ```
 
+And install minioclient:
+
+```
+install.packages("minioclient")
+library(minioclient)
+install_mc()
+```
+
+```
+
 # Create GitHub Token
 
 Within Rstudio, configure the environment to use your GitHub username and email:
@@ -93,24 +103,13 @@ Download the file tutorial_simple.json from the FaaSr-tutorial repository to you
 
 # Create S3 Bucket
 
-This tutorial uses the free/openly available Minio "play" server as your Data Store. The "play" server provides an easy way to get started, but keep in mind data stored there is available to the public and deleted every day - this is only intended to be used for this tutorial. Don't store any data other than the tutorial files.
+This tutorial uses the minioclient package with the free/openly available Minio "play" server as your Data Store. The "play" server provides an easy way to get started, but keep in mind data stored there is available to the public and deleted every day - this is only intended to be used for this tutorial. Don't store any data other than the tutorial files!
 
-Open your browser to: 
+Create a bucket called "faasr" using minioclient's mb (make bucket) command:
 
-* https://play.min.io:9443/browser
-
-Use the following Username and Password to login:
-
-* Username: Q3AM3UQ867SPQQA43P2F
-* Password: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
-
-Now you will create a bucket called "faasr" in the Minio plan server:
-
-* Click on the "Buckets" tab (left-hand side, under Administrator)
-* Click on the "Create Bucket +" button (top right-hand side)
-* Type "faasr" and click on the "Create Bucket" button
-* If you see message "Invalid bucket name" once you type faasr, it means this bucket has already been created by someone else running this tutorial; simply skip this step if this is the case
-* Click on the "Object Browser" tab (top left-hand side), scroll down until you see the "faasr" bucket; click on it
+```
+mc_mb("play/faasr")
+```
 
 # Register the Workflow with GitHub Actions
 
@@ -137,8 +136,14 @@ faasr_tutorial$invoke_workflow()
 
 # Browse the S3 Data Store to view outputs
 
-Go to your minio browser window that you opened in a previous step, and monitor the "faasr" bucket. You should eventually see a "tutorial" folder, and a "FaaSrLog" folder there.
+You can use the mc_ls command to browse the outputs:
 
-If you browse inside the "tutorial" folder, you will eventually see three files: sample1.csv and sample2.csv (created by the function create_sample_data) and sum.csv (created by the function compute_sum)
+```
+mc_ls("play/faasr/tutorial")
+```
+
+You will eventually see three files that have been produced by the execution of the tutorial workflow: sample1.csv and sample2.csv (created by the function create_sample_data) and sum.csv (created by the function compute_sum)
+
+
 
 
