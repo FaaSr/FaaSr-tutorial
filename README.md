@@ -51,20 +51,14 @@ Within Rstudio, install devtools, if you don’t already have it:
 install.packages("devtools")
 ```
 
-Then install FaaSr:
+Then install FaaSr and minioclient:
 
 ```
 devtools::install_github('FaaSr/FaaSr-package',ref='main',force=TRUE)
-```
-
-And install minioclient:
-
-```
+library("FaaSr"
 install.packages("minioclient")
-library(minioclient)
+library("minioclient")
 install_mc()
-```
-
 ```
 
 # Create GitHub Token
@@ -116,7 +110,6 @@ mc_mb("play/faasr")
 Use the faasr function in the FaaSr library to use the tutorial_simple.json and faasr_env files above. The faasr function returns a list (faasr_tutorial in this example) that you can then use to register and run your workflow:
 
 ```
-library("FaaSr")
 faasr_tutorial <- faasr(json_path="tutorial_simple.json", env="faasr_env")
 ```
 
