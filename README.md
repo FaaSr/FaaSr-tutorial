@@ -21,6 +21,32 @@ docker run --rm -ti -e ROOT=true -e PASSWORD=yourpassword -p 8787:8787 rocker/rs
 
 Then, point your browser to http://localhost:8787 and log in (username is rstudio and use the password you provided in the command above)
 
+# Install FaaSr package and required dependences
+
+## Clone the FaaSr tutorial repo
+
+First let's clone the FaaSr tutorial repo:
+
+* Click on "File -> New Project"
+* Select "Version Control"
+* Select "Git"
+* Enter the following URL: https://github.com/FaaSr/FaaSr-tutorial
+* Use your keyboard's tab; leave the default Project directory name: FaaSr-tutorial
+* Click on "Create Project"
+
+## Set as working directory
+
+You should now see the FaaSr-tutorials repository on the lower right-hand window of Rstudio
+
+Use the drop-down menu from "More" and select "Set As Working Directory"
+
+## Source the script that sets up FaaSr and dependences
+
+Run the following command (fair warning: it will take a few minutes)
+
+```
+source('rocker_setup.R')
+```
 
 # Configure Rstudio to use GitHub Token
 
@@ -35,23 +61,6 @@ Now set your GitHub token as a credential for use with Rstudio - paste your toke
 ```
 credentials::set_github_pat()
 ```
-
-# Clone the FaaSr tutorial repo
-
-Now let's clone the FaaSr tutorial repo:
-
-* Click on "File -> New Project"
-* Select "Version Control"
-* Select "Git"
-* Enter the following URL: https://github.com/FaaSr/FaaSr-tutorial
-* Use your keyboard's tab; leave the default Project directory name: FaaSr-tutorial
-* Click on "Create Project"
-
-# Set as working directory
-
-You should now see the FaaSr-tutorials repository on the lower right-hand window of Rstudio
-
-Use the drop-down menu from "More" and select "Set As Working Directory"
 
 # Configure the FaaSr secrets file with your GitHub token
 
