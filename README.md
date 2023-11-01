@@ -76,22 +76,26 @@ The JSON file stores the configuration for your workflow. We'll come back to tha
 
 # Register and invoke the simple workflow with GitHub Actions
 
-Now you're ready for some Action!
+Now you're ready for some Action! The steps below will:
 
-Use the faasr function in the FaaSr library to use the tutorial_simple.json and faasr_env files above. 
-The faasr function returns a list (faasr_tutorial in this example) that you can then use to register and run your workflow:
+* Use the faasr function in the FaaSr library to load the tutorial_simple.json and faasr_env in a list called faasr_tutorial
+* Use the register_workflow() function to create a repository called FaaSr-tutorial in GitHub, and configure the workflow there using GitHub Actions
+* Use the invoke_workflow() function to invoke the execution of your workflow
 
 ```
 faasr_tutorial <- faasr(json_path="tutorial_simple.json", env="faasr_env")
 faasr_tutorial$register_workflow()
+```
+
+When prompted, select "public" to create a public repository. Now run the workflow:
+
+```
 faasr_tutorial$invoke_workflow()
 ```
 
-Now the workflow is running; soon it will create outputs in the Minio play S3 bucket
-
 # Browse the S3 Data Store to view outputs
 
-You can use the mc_ls command to browse the outputs:
+Now the workflow is running; soon it will create outputs in the Minio play S3 bucket. You can use the mc_ls command to browse the outputs:
 
 ```
 mc_ls("play/faasr/tutorial")
