@@ -121,7 +121,7 @@ The tutorial includes a more complex workflow, as shown in the diagram below:
 
 To run this workflow, you can follow similar steps as above, but you will be working with a different JSON file - one that describes the larger workflow.
 
-First off, open the file tutorial_larger.json and replace the string "YOUR_GITHUB_USERNAME" with your GitHub username, and save this file
+**First off, you need to open the file tutorial_larger.json and replace the string "YOUR_GITHUB_USERNAME" with your GitHub username, and save this file**
 
 Then, you can load this file into another R list faasr_tutorial_larger:
 
