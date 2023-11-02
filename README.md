@@ -101,8 +101,57 @@ Now the workflow is running; soon it will create outputs in the Minio play S3 bu
 mc_ls("play/faasr/tutorial")
 ```
 
-You will eventually see three files that have been produced by the execution of the tutorial workflow: sample1.csv and sample2.csv (created by the function create_sample_data) and sum.csv (created by the function compute_sum)
+The simple example you just executed consists of two R functions: create_sample_data.R creates two CSV files, and compute_sum.R computes their sum.  You will eventually see three files that have been produced by the execution of the tutorial workflow: sample1.csv and sample2.csv (created by the function create_sample_data) and sum.csv (created by the function compute_sum)
 
+# A more complex workflow
 
+The tutorial includes a more complex workflow, as shown in the diagram below:
 
+![alt text](tutorial_larger_workflow.jpg)
 
+To run this workflow, you can follow similar steps as above, but you will be working with a different JSON file - one that describes the larger workflow.
+
+First off, open the file tutorial_larger.json and replace the string "YOUR_GITHUB_USERNAME" with your GitHub username, and save this file
+
+Then, you can load this file into another R list faasr_tutorial_larger:
+
+```
+faasr_tutorial_larger <- faasr(json_path="tutorial_larger.json", env="faasr_env")
+```
+
+Use it to create a new repository for this workflow with GitHub Actions (remember to type public when prompted):
+
+```
+faasr_tutorial_larger$register_workflow()
+```
+
+Then invoke the workflow:
+
+```
+faasr_tutorial_larger$invoke_workflow()
+```
+
+You can monitor the outputs in the S3 bucket using minioclient:
+
+```
+mc_ls("play/faasr/tutorial2")
+```
+
+# Using the JSON Builder Shiny app
+
+While you can create and edit FaaSr configuration files in any text editor, we provide a graphical user interface in a shiny app to facilitate the development of simple workflows. You can use this tool to create a configuration from scratch, or upload a JSON configuration as a starting point. The Shiny app allows you to download the final JSON to your computer for use in FaaSr, for example as in faasr_tutorial_larger <- faasr(json_path="tutorial_larger.json", env="faasr_env")
+
+[Right-click here to open the JSON Builder Shiny app in another window](https://faasr.shinyapps.io/faasr-json-builder/). You can download the tutorial_larger.json from this repository, then upload to the Shiny app, and you will be able to visualize the image shown above
+
+# Under the hood - GitHub Actions
+
+This tutorial creates two repositories in your GitHub account:
+
+* FaaSr-tutorial
+* FaaSr-tutorial2
+
+Notice that if you browse to these repositories on GitHub, if you select "Actions" on the top tab, you will see a list of actions that have executed (e.g. create_sample_data, sum). 
+
+This repository only holds the actions that were created automatically with the register_workflow FaaSr call, and invoked with invoke_workflow. Feel free to delete these repositories after you finish the tutorial.
+
+Note: for the tutorial_larger example, you will notice that both "sum2" and "finalsum" have both a successful invocation (green check) and an aborted invocation (red X) - this is normal! These are invoked twice, because they have two predecessors in the graph above; however, only one of the invocations succeeds (the other one is terminated)
