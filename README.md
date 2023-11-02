@@ -8,7 +8,17 @@ This tutorial guides you through the setup and execution of a simple FaaSr workf
 
 # Requirements
 
-For a reproducible experience, this tutorial is designed to work with the rocker/rstudio Docker container, and the main requirements to run the tutorial are: 1) a GitHub account, 2) a GitHub personal access token (PAT), and 3) Docker installed in your computer
+For a reproducible experience, this tutorial is designed to work with the [rocker/rstudio Docker container](https://rocker-project.org/), and the main requirements to run the tutorial are: 1) a GitHub account, 2) a GitHub personal access token (PAT), and 3) [Docker installed in your computer](https://docs.docker.com/get-started/)
+
+If you don't have a GitHub token, you need to create one. [Detailed instructions are available here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic); in summary:
+
+* In the upper-right corner of any page, click your profile photo, then click Settings.
+* In the left sidebar, click Developer settings.
+* In the left sidebar, click Personal access tokens.
+* Click Generate new token.
+* In the "Note" field, give your token a descriptive name.
+* In scopes, select “workflow” and “read:org” (under admin:org)
+* Copy and paste the token; you will need to save it to a file in your computer for use in the tutorial
 
 # Start and connect to Rocker Rstudio container
 
