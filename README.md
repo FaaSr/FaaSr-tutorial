@@ -44,12 +44,6 @@ First let's clone the FaaSr tutorial repo:
 * Use your keyboard's tab; leave the default Project directory name: FaaSr-tutorial
 * Click on "Create Project"
 
-## Set as working directory
-
-You should now see the FaaSr-tutorials repository on the lower right-hand window of Rstudio
-
-Use the drop-down menu from "More" and select "Set As Working Directory"
-
 ## Source the script that sets up FaaSr and dependences
 
 Run the following command (fair warning: it will take a few minutes)
