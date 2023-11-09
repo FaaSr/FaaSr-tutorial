@@ -75,7 +75,7 @@
             "InvokeNext": "finalsum"
         },
         "finalsum": {
-            "FunctionName": "compute_sum",
+            "FunctionName": "compute_sum_arrow",
             "FaaSServer": "My_GitHub_Account",
             "Arguments": {
                 "folder": "tutorial2",
@@ -99,6 +99,7 @@
     "FunctionGitRepo": {
         "create_sample_data": "FaaSr/FaaSr-tutorial",
         "compute_sum": "FaaSr/FaaSr-tutorial",
+        "compute_sum_arrow": "FaaSr/FaaSr-tutorial",
         "compute_mult": "FaaSr/FaaSr-tutorial",
         "compute_div": "FaaSr/FaaSr-tutorial"
     },
