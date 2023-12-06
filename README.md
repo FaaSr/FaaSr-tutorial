@@ -103,6 +103,9 @@ Now the workflow is running; soon it will create outputs in the Minio play S3 bu
 
 ```
 mc_ls("play/faasr/tutorial")
+mc_cat("play/faasr/tutorial/sample1.csv")
+mc_cat("play/faasr/tutorial/sample2.csv")
+mc_cat("play/faasr/tutorial/sum.csv")
 ```
 
 The simple example you just executed consists of two R functions: create_sample_data.R creates two CSV files, and compute_sum.R computes their sum.  You will eventually see three files that have been produced by the execution of the tutorial workflow: sample1.csv and sample2.csv (created by the function create_sample_data) and sum.csv (created by the function compute_sum)
