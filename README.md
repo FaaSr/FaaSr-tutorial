@@ -110,6 +110,23 @@ mc_cat("play/faasr/tutorial/sum.csv")
 
 The simple example you just executed consists of two R functions: create_sample_data.R creates two CSV files, and compute_sum.R computes their sum.  You will eventually see three files that have been produced by the execution of the tutorial workflow: sample1.csv and sample2.csv (created by the function create_sample_data) and sum.csv (created by the function compute_sum)
 
+# Add a timer trigger
+
+In the example above, you triggered the tutorial workflow once (manually) with the invoke_workflow() function. You can also set a timer trigger for your workflow with set_workflow_timer(cron), where cron is a string in the cron format. For example, you can set a timer for every 10 minutes:
+
+```
+faasr_tutorial$set_workflow_timer("*/10 * * * *")
+```
+
+Check your Actions tab in your FaaSr-tutorial repo, wait for the next 10-minute interval (note that GitHub does not guarantee a precise start time "on the dot"), and you will see that the workflow now will get invoked multiple times.
+
+Make sure you unset the timer once you're done testing this feature:
+
+```
+faasr_tutorial$unset_workflow_timer()
+```
+
+
 # A more complex workflow
 
 The tutorial includes a more complex workflow, as shown in the diagram below:
