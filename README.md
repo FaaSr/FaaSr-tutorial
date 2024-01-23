@@ -49,7 +49,7 @@ First let's clone the FaaSr tutorial repo:
 Run the following command (fair warning: it will take a few minutes)
 
 ```
-source('rocker_setup.R')
+source('rocker_setup_script')
 ```
 
 # Configure Rstudio to use GitHub Token
