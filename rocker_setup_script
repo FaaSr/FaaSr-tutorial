@@ -1,0 +1,24 @@
+# install dependences: sodium
+system('sudo apt-get update')
+system('sudo apt-get install libsodium-dev -y')
+
+# install dependences - devtools
+install.packages('devtools')
+library('devtools')
+
+# install dependences - sodium
+install.packages('sodium')
+library('sodium')
+
+# install dependences - minioclient
+install.packages('minioclient')
+library('minioclient')
+install_mc()
+mc_mb('play/faasr')
+
+# install FaaSr
+devtools::install_github('faasr/FaaSr-package@1.0.8.0',force=TRUE)
+library('FaaSr')
+
+# add credentials library
+library('credentials')

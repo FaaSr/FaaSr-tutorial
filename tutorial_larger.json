@@ -89,12 +89,12 @@
         }
     },
     "ActionContainers": {
-        "start": "faasr/github-actions-tidyverse",
-        "sum": "faasr/github-actions-tidyverse",
-        "mult": "faasr/github-actions-tidyverse",
-        "div": "faasr/github-actions-tidyverse",
-        "sum2": "faasr/github-actions-tidyverse",
-        "finalsum": "faasr/github-actions-tidyverse"
+        "start": "ghcr.io/faasr/github-actions-tidyverse",
+        "sum": "ghcr.io/faasr/github-actions-tidyverse",
+        "mult": "ghcr.io/faasr/github-actions-tidyverse",
+        "div": "ghcr.io/faasr/github-actions-tidyverse",
+        "sum2": "ghcr.io/faasr/github-actions-tidyverse",
+        "finalsum": "ghcr.io/faasr/github-actions-tidyverse"
     },
     "FunctionGitRepo": {
         "create_sample_data": "FaaSr/FaaSr-tutorial",
