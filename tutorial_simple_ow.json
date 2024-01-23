@@ -40,8 +40,8 @@
         }
     },
     "ActionContainers": {
-        "start": "rjofig/openwhisk-tidyverse:1.0.8.0-dev",
-        "sum": "rjofig/openwhisk-tidyverse:1.0.8.0-dev"
+        "start": "faasr/openwhisk-tidyverse:1.0.8.0-dev",
+        "sum": "faasr/openwhisk-tidyverse:1.0.8.0-dev"
     },
     "FunctionGitRepo": {
         "create_sample_data": "FaaSr/FaaSr-tutorial",

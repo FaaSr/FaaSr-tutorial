@@ -41,8 +41,8 @@
         }
     },
     "ActionContainers": {
-        "start": "faasr/github-actions-tidyverse",
-        "sum": "faasr/github-actions-tidyverse"
+        "start": "ghcr.io/faasr/github-actions-tidyverse",
+        "sum": "ghcr.io/faasr/github-actions-tidyverse"
     },
     "FunctionGitRepo": {
         "create_sample_data": "FaaSr/FaaSr-tutorial",
