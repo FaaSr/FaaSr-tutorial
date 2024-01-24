@@ -51,10 +51,11 @@ First let's clone the FaaSr tutorial repo - copy and paste this command
 
 ```
 system('git clone https://github.com/FaaSr/FaaSr-tutorial')
-setwd("~/FaaSr-tutorial")
 ```
 
-then click on FaaSr-Tutorial on the lower right window
+Click on FaaSr-Tutorial on the lower right window, then
+
+In the drop-down menu for More, select "Set as Working Directory"
 
 ## Source the script that sets up FaaSr and dependences
 
