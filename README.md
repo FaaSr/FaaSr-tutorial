@@ -8,9 +8,14 @@ This tutorial guides you through the setup and execution of a simple FaaSr workf
 
 # Requirements
 
-For a reproducible experience, this tutorial is designed to work with the [rocker/rstudio Docker container](https://rocker-project.org/), and the main requirements to run the tutorial are: 1) a GitHub account, 2) a GitHub personal access token (PAT), and 3) [Docker installed in your computer](https://docs.docker.com/get-started/)
+For a reproducible experience, this tutorial is designed to work with either a Posit Cloud instance (in the cloud), or the [rocker/rstudio Docker container](https://rocker-project.org/) (on your own computer).
 
-If you don't have a GitHub token, you need to create one. [Detailed instructions are available here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic); in summary:
+The main requirements to run the tutorial is a GitHub account. More specifically, you need: 
+1) a GitHub account, 
+2) a GitHub personal access token (PAT), and,  
+3) Either a [Posit cloud account](https://posit.cloud/) (which you can login with GitHub), or [Docker installed in your computer](https://docs.docker.com/get-started/)
+
+While you can use your existing GitHub PAT if you have one, it is recommended that you create a short-lived GitHub PAT token for this tutorial if you plan to use Posit Cloud. [Detailed instructions to create a PAT are available here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic); in summary:
 
 * In the upper-right corner of any page, click your profile photo, then click Settings.
 * In the left sidebar, click Developer settings.
@@ -20,9 +25,16 @@ If you don't have a GitHub token, you need to create one. [Detailed instructions
 * In scopes, select “workflow” and “read:org” (under admin:org)
 * Copy and paste the token; you will need to save it to a file in your computer for use in the tutorial
 
-# Start and connect to Rocker Rstudio container
 
-"Pull" and run the Rocker Rstudio container with the following command:
+# Start your Rstudio session on Posit Cloud, or local Docker
+
+## For Posit Cloud
+
+[Login with your GitHub account](https://posit.cloud/login), and then [navigate to your Posit workspace](https://posit.cloud/content/yours?sort=name_asc). Click on New Project, and select "New RStudio Project". This will start RStudio and connect you to it through your browser.
+
+## For local Docker
+
+"Pull" and run the Rocker RStudio container with the following command:
 
 ```
 docker pull rocker/rstudio
@@ -35,18 +47,26 @@ Then, point your browser to http://localhost:8787 and log in (username is rstudi
 
 ## Clone the FaaSr tutorial repo
 
-First let's clone the FaaSr tutorial repo:
+First let's clone the FaaSr tutorial repo - copy and paste this command
 
-* Click on "File -> New Project"
-* Select "Version Control"
-* Select "Git"
-* Enter the following URL: https://github.com/FaaSr/FaaSr-tutorial
-* Use your keyboard's tab; leave the default Project directory name: FaaSr-tutorial
-* Click on "Create Project"
+```
+system('git clone https://github.com/FaaSr/FaaSr-tutorial')
+setwd("~/FaaSr-tutorial")
+```
+
+then click on FaaSr-Tutorial on the lower right window
 
 ## Source the script that sets up FaaSr and dependences
 
-Run the following command (fair warning: it will take a few minutes)
+Run one of the following commands, depending on your setup (Posit, or local Docker). Fair warning: it will take a few minutes to install all dependences:
+
+### For Posit Cloud:
+
+```
+source('posit_setup_script')
+```
+
+### For local Docker
 
 ```
 source('rocker_setup_script')
