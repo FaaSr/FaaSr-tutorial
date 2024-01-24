@@ -1,0 +1,22 @@
+# install dependences - devtools
+install.packages('devtools')
+library('devtools')
+
+# install dependences - sodium
+system('./install_sodium.sh')
+install.packages('sodium')
+dyn.load('/cloud/project/FaaSr-tutorial/libsodium-1.0.18/src/libsodium/.libs/libsodium.so.23')
+library('sodium')
+
+# install dependences - minioclient
+install.packages('minioclient')
+library('minioclient')
+install_mc()
+mc_mb('play/faasr')
+
+# install FaaSr
+devtools::install_github('renatof/FaaSr-package-dev',force=TRUE)
+library('FaaSr')
+
+# add credentials library
+library('credentials')
