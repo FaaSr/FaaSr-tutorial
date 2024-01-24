@@ -8,7 +8,7 @@ This tutorial guides you through the setup and execution of a simple FaaSr workf
 
 # Requirements
 
-For a reproducible experience, this tutorial is designed to work with either a Posit Cloud instance (in the cloud), or the [rocker/rstudio Docker container](https://rocker-project.org/) (on your own computer).
+For a reproducible experience, this tutorial is designed to work with either a Posit Cloud instance (in the cloud), or the [rocker/rstudio Docker container](https://rocker-project.org/) (on your own computer). You can also run this tutorial from your existing RStudio environment - you will need to install devtools, sodium, minioclient, and credentials packages for FaaSr.
 
 The main requirements to run the tutorial is a GitHub account. More specifically, you need: 
 1) a GitHub account, 
@@ -34,7 +34,7 @@ While you can use your existing GitHub PAT if you have one, it is recommended th
 
 ## For local Docker
 
-"Pull" and run the Rocker RStudio container with the following command:
+"Pull" and run the Rocker RStudio container with the following command in your terminal:
 
 ```
 docker pull rocker/rstudio
@@ -42,6 +42,9 @@ docker run --rm -ti -e ROOT=true -e PASSWORD=yourpassword -p 8787:8787 rocker/rs
 ```
 
 Then, point your browser to http://localhost:8787 and log in (username is rstudio and use the password you provided in the command above)
+
+
+*Note: don't forget to terminate your Posit Cloud session (click on the "Trash" next to your workspace) or your Docker container (ctrl-C on the terminal) at the end of the tutorial*
 
 # Install FaaSr package and required dependences
 
