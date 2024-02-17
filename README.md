@@ -203,3 +203,9 @@ Notice that if you browse to these repositories on GitHub, if you select "Action
 This repository only holds the actions that were created automatically with the register_workflow FaaSr call, and invoked with invoke_workflow. Feel free to delete these repositories after you finish the tutorial.
 
 Note: for the tutorial_larger example, you will notice that both "sum2" and "finalsum" have both a successful invocation (green check) and an aborted invocation (red X) - this is normal! These are invoked twice, because they have two predecessors in the graph above; however, only one of the invocations succeeds (the other one is terminated)
+
+# (Optional) Using OpenWhisk and AWS Lambda
+
+If you have access to OpenWhisk and/or AWS Lambda accounts, the configuration files tutorial_simple_ow.json tutorial_simple_lambda.json provide templates that you can use to run the same tutorial workflow on these different platforms. 
+
+Here, the R code and the workflow don't change - only the configuration of the ComputeServers in the .json files (and associated credentials in the faasr_env file) are different.
