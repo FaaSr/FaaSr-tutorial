@@ -1,0 +1,54 @@
+{
+    "ComputeServers": {
+        "My_Lambda_Account": {
+            "FaaSType": "Lambda",
+            "Region": "us-east-1"
+        }
+    },
+    "DataStores": {
+        "My_Minio_Bucket": {
+            "Endpoint": "https://play.min.io",
+            "Bucket": "faasr",
+            "Region": "",
+            "Writable": "TRUE"
+        }
+    },
+    "FunctionList": {
+        "start": {
+            "FunctionName": "create_sample_data",
+            "FaaSServer": "My_Lambda_Account",
+            "Arguments": {
+                "folder": "tutorial",
+                "output1": "sample1.csv",
+                "output2": "sample2.csv"
+            },
+            "InvokeNext": "sum"
+        },
+        "sum": {
+            "FunctionName": "compute_sum",
+            "FaaSServer": "My_Lambda_Account",
+            "Arguments": {
+                "folder": "tutorial",
+                "input1": "sample1.csv",
+                "input2": "sample2.csv",
+                "output": "sum.csv"
+            },
+            "InvokeNext": [
+
+            ]
+        }
+    },
+    "ActionContainers": {
+        "start": "145342739029.dkr.ecr.us-east-1.amazonaws.com/aws-lambda-tidyverse",
+        "sum": "145342739029.dkr.ecr.us-east-1.amazonaws.com/aws-lambda-tidyverse"
+    },
+    "FunctionGitRepo": {
+        "create_sample_data": "FaaSr/FaaSr-tutorial",
+        "compute_sum": "FaaSr/FaaSr-tutorial"
+    },
+    "FunctionInvoke": "start",
+    "InvocationID": "",
+    "FaaSrLog": "FaaSrLog",
+    "LoggingDataStore": "My_Minio_Bucket",
+    "DefaultDataStore": "My_Minio_Bucket"
+}
