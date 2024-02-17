@@ -38,10 +38,6 @@
             ]
         }
     },
-    "ActionContainers": {
-        "start": "145342739029.dkr.ecr.us-east-1.amazonaws.com/aws-lambda-tidyverse",
-        "sum": "145342739029.dkr.ecr.us-east-1.amazonaws.com/aws-lambda-tidyverse"
-    },
     "FunctionGitRepo": {
         "create_sample_data": "FaaSr/FaaSr-tutorial",
         "compute_sum": "FaaSr/FaaSr-tutorial"
