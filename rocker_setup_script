@@ -17,7 +17,7 @@ install_mc()
 mc_mb('play/faasr')
 
 # install FaaSr
-devtools::install_github('FaaSr/FaaSr-package@1.1.2',force=TRUE)
+install.packages('FaaSr', repos='http://cran.us.r-project.org')
 library('FaaSr')
 
 # add credentials library
