@@ -13,7 +13,7 @@ For a reproducible experience, this tutorial is designed to work with either a P
 The main requirements to run the tutorial is a GitHub account. More specifically, you need: 
 1) a GitHub account, 
 2) a GitHub personal access token (PAT), and,  
-3) Either a [Posit cloud account](https://posit.cloud/) (which you can login with GitHub), or [Docker installed in your computer](https://docs.docker.com/get-started/)
+3) Either a [Posit cloud account](https://posit.cloud/) (which you can login with GitHub), or [Docker installed in your computer](https://docs.docker.com/get-started/). (You can also use your own Rstudio; however, the Posit cloud and Rocker approaches are recommended for reproducibility)
 
 While you can use your existing GitHub PAT if you have one, it is recommended that you create a short-lived GitHub PAT token for this tutorial if you plan to use Posit Cloud. [Detailed instructions to create a PAT are available here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic); in summary:
 
@@ -74,6 +74,12 @@ source('posit_setup_script')
 
 ```
 source('rocker_setup_script')
+```
+
+### If using Rstudio 
+
+```
+source('rstudio_setup_script')
 ```
 
 # Configure Rstudio to use GitHub Token
