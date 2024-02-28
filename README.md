@@ -78,7 +78,7 @@ source('rocker_setup_script')
 
 ### For Rstudio desktop
 
-Use this script is if you are using Rstudio in your desktop (without Rocker):
+Or, if you are using Rstudio natively in your desktop (without Docker (*note: you may need to install the sodium library separately for your system*):
 
 ```
 source('rstudio_setup_script')
