@@ -1,0 +1,20 @@
+# install dependences - devtools
+install.packages('devtools')
+library('devtools')
+
+# install dependences - sodium
+install.packages('sodium')
+library('sodium')
+
+# install dependences - minioclient
+install.packages('minioclient')
+library('minioclient')
+install_mc()
+mc_mb('play/faasr')
+
+# install FaaSr
+install.packages('FaaSr')
+library('FaaSr')
+
+# add credentials library
+library('credentials')
