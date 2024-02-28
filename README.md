@@ -76,7 +76,9 @@ source('posit_setup_script')
 source('rocker_setup_script')
 ```
 
-### If using Rstudio 
+### For Rstudio desktop
+
+Use this script is if you are using Rstudio in your desktop (without Rocker):
 
 ```
 source('rstudio_setup_script')
