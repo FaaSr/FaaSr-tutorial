@@ -193,11 +193,11 @@ You can monitor the outputs in the S3 bucket using minioclient:
 mc_ls("play/faasr/tutorial2")
 ```
 
-# Using the JSON Builder Shiny app
+# Using the FaaSr workflow builder
 
-While you can create and edit FaaSr configuration files in any text editor, we provide a graphical user interface in a shiny app to facilitate the development of simple workflows. You can use this tool to create a configuration from scratch, or upload a JSON configuration as a starting point. The Shiny app allows you to download the final JSON to your computer for use in FaaSr, for example as in faasr_tutorial_larger <- faasr(json_path="tutorial_larger.json", env="faasr_env")
+While you can create and edit FaaSr configuration files in any text editor, FaaSr also provides a Shiny app graphical user interface to facilitate the development of simple workflows using your browser. You can use it to edit a configuration from scratch, or from an existing JSON configuration file that you upload as a starting point, and then download the edited JSON file to your computer for use in FaaSr, for example as in faasr_tutorial_larger <- faasr(json_path="tutorial_larger.json", env="faasr_env")
 
-[Right-click here to open the JSON Builder Shiny app in another window](https://faasr.shinyapps.io/faasr-json-builder/). You can download the tutorial_larger.json from this repository, then upload to the Shiny app, and you will be able to visualize the image shown above
+[Right-click here to open the FaaSr workflow builder in another window](https://faasr.shinyapps.io/faasr-json-builder/). To test it, you can upload the tutorial_larger.json from this tutorial, and you will be able to visualize and edit the workflow shown above.
 
 # Under the hood - GitHub Actions
 
