@@ -199,6 +199,36 @@ While you can create and edit FaaSr configuration files in any text editor, FaaS
 
 [Right-click here to open the FaaSr workflow builder in another window](https://faasr.shinyapps.io/faasr-json-builder/). To test it, you can upload the tutorial_larger.json from this tutorial, and you will be able to visualize and edit the workflow shown above.
 
+# Test local execution
+
+While FaaSr is designed to allow you to execute workflows and access data in the cloud, in an automated and unmanaged way, it is useful to test workflow executions locally so you can verify desired functionality and debug errors. FaaSr provides a function that allows you to run a workflow locally in your desktop. 
+
+First you need to create, in your working directory, a folder named `faasr_data` (if it doesn't already exist). 
+This folder mimics the behavior of an S3 bucket, but locally in your computer.
+Inside this folder, you store the payload and credentials file (`tutorial_simple.json` and `faasr_env` in the example below), and you need to create another folder named `R`. You then need to copy your R functions to this folder:
+
+```
+system("mkdir -p faasr_data/R")
+system("cp *.R faasr_data/R")
+system("cp tutorial_simple.json faasr_data")
+system("cp faasr_env faasr_data")
+```
+
+You also may need to install arrow, if it's not yet installed in your system:
+
+```
+install.packages("arrow")
+arrow::install_arrow(minimal = FALSE)
+```
+
+Now you can run the workflow locally using `$faasr_test`:
+
+```
+faasr_tutorial$faasr_test()
+```
+
+The outputs are available within the `faasr_data` folder. Again, this folder behaves as if it were an S3 bucket, but local to your computer.
+
 # Under the hood - GitHub Actions
 
 This tutorial creates two repositories in your GitHub account:
@@ -210,7 +240,6 @@ Notice that if you browse to these repositories on GitHub, if you select "Action
 
 This repository only holds the actions that were created automatically with the register_workflow FaaSr call, and invoked with invoke_workflow. Feel free to delete these repositories after you finish the tutorial.
 
-Note: for the tutorial_larger example, you will notice that both "sum2" and "finalsum" have both a successful invocation (green check) and an aborted invocation (red X) - this is normal! These are invoked twice, because they have two predecessors in the graph above; however, only one of the invocations succeeds (the other one is terminated)
 
 # (Optional) Using OpenWhisk and AWS Lambda
 
