@@ -9,6 +9,7 @@ dyn.load('/cloud/project/FaaSr-tutorial/libsodium-1.0.18/src/libsodium/.libs/lib
 library('sodium')
 
 # install dependences - minioclient
+options(timeout=360)
 install.packages('minioclient')
 library('minioclient')
 install_mc()

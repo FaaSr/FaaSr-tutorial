@@ -11,7 +11,7 @@
         "My_Minio_Bucket": {
             "Endpoint": "https://play.min.io",
             "Bucket": "faasr",
-            "Region": "",
+            "Region": "us-east-1",
             "Writable": "TRUE"
         }
     },

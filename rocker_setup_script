@@ -11,6 +11,7 @@ install.packages('sodium')
 library('sodium')
 
 # install dependences - minioclient
+options(timeout=360)
 install.packages('minioclient')
 library('minioclient')
 install_mc()

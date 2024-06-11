@@ -229,6 +229,33 @@ faasr_tutorial$faasr_test()
 
 The outputs are available within the `faasr_data` folder. Again, this folder behaves as if it were an S3 bucket, but local to your computer.
 
+# Managing log files
+
+FaaSr generates log files for each worflow execution that are stored in the S3 bucket. 
+By default, these logs are stored in a folder FaaSrLog, and each workflow log is stored in a folder with a name that is a [unique UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). You can use the following functions to help manage your logs:
+
+```
+faasr_tutorial$get_log_df()
+```
+Queries for all logs in your S3 bucket and writes a data frame with this information to file named `faasr_output_logs.txt` in your current working directory.
+
+```
+faasr_tutorial$get_log(UUID)
+```
+Downloads the logs from the S3 bucket for a particular UUID (which you can determine by inspecting `faasr_output_logs.txt`)
+
+```
+faasr_tutorial$delete_log(UUID)
+```
+Deletes a specific log from the S3 bucket given its UUID
+
+```
+faasr_tutorial$delete_log_date(date)
+```
+Deletes all logs for a particular date from the S3 bucket
+
+
+
 # Under the hood - GitHub Actions
 
 This tutorial creates two repositories in your GitHub account:
