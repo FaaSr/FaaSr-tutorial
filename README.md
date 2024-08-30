@@ -41,6 +41,13 @@ docker pull rocker/rstudio
 docker run --rm -ti -e ROOT=true -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio
 ```
 
+*Note for Mac M1/2/3 users: currently the Arm64 version of the Rocker container fails to install devtools; the commands below download and run an amd64-based Rocker that works with this tutorial:*
+
+```
+docker pull --platform linux/amd64 rocker/rstudio
+docker run --rm -ti --platform linux/amd64 -e ROOT=true -e PASSWORD=yourpassword -p 8787:8787 rocker/rstudio
+```
+
 Then, point your browser to http://localhost:8787 and log in (username is rstudio and use the password you provided in the command above)
 
 
