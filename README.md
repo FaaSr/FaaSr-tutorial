@@ -19,10 +19,10 @@ While you can use your existing GitHub PAT if you have one, it is recommended th
 
 * In the upper-right corner of any page, click your profile photo, then click Settings.
 * In the left sidebar, click Developer settings.
-* In the left sidebar, click Personal access tokens.
-* Click Generate new token.
+* In the left sidebar, click Personal access tokens (Classic).
+* Click Generate new token (Classic); *note: make sure to select Classic*
 * In the "Note" field, give your token a descriptive name.
-* In scopes, select “workflow” and “read:org” (under admin:org)
+* In scopes, select “workflow” and “read:org” (under admin:org). 
 * Copy and paste the token; you will need to save it to a file in your computer for use in the tutorial
 
 
