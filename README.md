@@ -13,7 +13,8 @@ For a reproducible experience, this tutorial is designed to work with either a P
 The main requirements to run the tutorial is a GitHub account. More specifically, you need: 
 1) a GitHub account, 
 2) a GitHub personal access token (PAT), and,  
-3) Either a [Posit cloud account](https://posit.cloud/) (which you can login with GitHub), or [Docker installed in your computer](https://docs.docker.com/get-started/). (You can also use your own Rstudio; however, the Posit cloud and Rocker approaches are recommended for reproducibility)
+3) Either a [Posit cloud account](https://posit.cloud/) (which you can login with GitHub), or [Docker installed in your computer](https://docs.docker.com/get-started/) (You can also use your own Rstudio; however, the Posit cloud and Rocker approaches are recommended for reproducibility),
+4) a Minio S3 bucket (you can use the [Play Console](https://min.io/docs/minio/linux/administration/minio-console.html#minio-console) to use a public/unauthenticated server)
 
 While you can use your existing GitHub PAT if you have one, it is recommended that you create a short-lived GitHub PAT token for this tutorial if you plan to use Posit Cloud. [Detailed instructions to create a PAT are available here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic); in summary:
 
@@ -57,15 +58,15 @@ Then, point your browser to http://localhost:8787 and log in (username is rstudi
 
 ## Clone the FaaSr tutorial repo
 
-First let's clone the FaaSr tutorial repo - copy and paste this command
+First let's clone the FaaSr tutorial repo - copy and paste this command in the terminal:
 
 ```
 system('git clone https://github.com/FaaSr/FaaSr-tutorial')
 ```
 
-Click on FaaSr-Tutorial on the lower right window, then
+Click on FaaSr-Tutorial folder on the lower right window (Files), then
 
-In the drop-down menu for More, select "Set as Working Directory"
+Select More > Set as Working Directory from the drop down menu.
 
 ## Source the script that sets up FaaSr and dependences
 
@@ -93,13 +94,13 @@ source('rstudio_setup_script')
 
 # Configure Rstudio to use GitHub Token
 
-Within Rstudio, configure the environment to use your GitHub account (replace with your username and email)
+Within Rstudio, configure the environment to use your GitHub account (replace with your username and email). Input this into the console:
 
 ```
 usethis::use_git_config(user.name = "YOUR_GITHUB_USERNAME", user.email = "YOUR_GITHUB_EMAIL")
 ```
 
-Now set your GitHub token as a credential for use with Rstudio - paste your token to the pop-up window that opens with this command:
+Now set your GitHub token as a credential for use with Rstudio - paste your token to the pop-up window that opens with this command pasted into the console:
 
 ```
 credentials::set_github_pat()
@@ -109,13 +110,17 @@ credentials::set_github_pat()
 
 Open the file named faasr_env in the editor. You need to enter your GitHub token here: replace the string "REPLACE_WITH_YOUR_GITHUB_TOKEN" with your GitHub token, and save this file. 
 
-The secrets file stores all credentials you use for FaaSr. You will notice that this file has the pre-populated credentials (secret key, access key) to access the Minio "play" bucket
+The secrets file stores all credentials you use for FaaSr. You will notice that this file has the pre-populated credentials (secret key, access key) to access the Minio "play" bucket.
 
 # Configure the FaaSr JSON simple workflow template with your GitHub username
 
-Open the file tutorial_simple.json  and replace the string "YOUR_GITHUB_USERNAME" with your GitHub username, and save this file.
+Open the file tutorial_simple.json and replace the string "YOUR_GITHUB_USERNAME" with your GitHub username, and save this file.
 
 The JSON file stores the configuration for your workflow. We'll come back to that later.
+
+# Creating a Minio S3 bucket
+
+Create a new bucket in your Minio client (Administrator > Buckets), and name the Bucket Name as "faasr". This is name that is accessed in line 13 in the tutorial_simple.json file. 
 
 # Register and invoke the simple workflow with GitHub Actions
 
@@ -124,6 +129,8 @@ Now you're ready for some Action! The steps below will:
 * Use the faasr function in the FaaSr library to load the tutorial_simple.json and faasr_env in a list called faasr_tutorial
 * Use the register_workflow() function to create a repository called FaaSr-tutorial in GitHub, and configure the workflow there using GitHub Actions
 * Use the invoke_workflow() function to invoke the execution of your workflow
+
+Enter the following commands to your console:
 
 ```
 faasr_tutorial <- faasr(json_path="tutorial_simple.json", env="faasr_env")
@@ -138,7 +145,7 @@ faasr_tutorial$invoke_workflow()
 
 # Browse the S3 Data Store to view outputs
 
-Now the workflow is running; soon it will create outputs in the Minio play S3 bucket. You can use the mc_ls command to browse the outputs:
+Now the workflow is running; soon it will create outputs in the Minio play S3 bucket. You can track the progress of the actions in your GitHub Actions page. You can use the mc_ls command to browse the outputs in the console:
 
 ```
 mc_ls("play/faasr/tutorial")
@@ -170,7 +177,7 @@ faasr_tutorial$unset_workflow_timer()
 
 The tutorial includes a more complex workflow, as shown in the diagram below:
 
-![alt text](tutorial_larger_workflow.jpg)
+![Larger, more complex workflow diagram using GitHub actions.](tutorial_larger_workflow.jpg)
 
 To run this workflow, you can follow similar steps as above, but you will be working with a different JSON file - one that describes the larger workflow.
 
