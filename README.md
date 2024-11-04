@@ -35,7 +35,7 @@ While you can use your existing GitHub PAT if you have one, it is recommended th
 
 ## For local Docker
 
-"Pull" and run the Rocker RStudio container with the following command in your terminal:
+"Pull" and run the Rocker RStudio container with the following command in your terminal (note: set your own password by replacing "yourpassword"):
 
 ```
 docker pull rocker/rstudio
