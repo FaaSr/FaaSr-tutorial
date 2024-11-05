@@ -16,6 +16,12 @@ The main requirements to run the tutorial is a GitHub account. More specifically
 3) Either a [Posit cloud account](https://posit.cloud/) (which you can login with GitHub), or [Docker installed in your computer](https://docs.docker.com/get-started/) (You can also use your own Rstudio; however, the Posit cloud and Rocker approaches are recommended for reproducibility),
 4) a Minio S3 bucket (you can use the [Play Console](https://min.io/docs/minio/linux/administration/minio-console.html#minio-console) to use a public/unauthenticated server)
 
+* You can explore the Console using https://play.min.io:9443. Log in with the following credentials:
+```
+Username: Q3AM3UQ867SPQQA43P2F
+Password: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+```
+
 While you can use your existing GitHub PAT if you have one, it is recommended that you create a short-lived GitHub PAT token for this tutorial if you plan to use Posit Cloud. [Detailed instructions to create a PAT are available here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic); in summary:
 
 * In the upper-right corner of any page, click your profile photo, then click Settings.
