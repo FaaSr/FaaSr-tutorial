@@ -124,10 +124,6 @@ Open the file tutorial_simple.json and replace the string "YOUR_GITHUB_USERNAME"
 
 The JSON file stores the configuration for your workflow. We'll come back to that later.
 
-# Creating a Minio S3 bucket
-
-Create a new bucket in your Minio client (Administrator > Buckets), and name the Bucket Name as "faasr". This is name that is accessed in line 13 in the tutorial_simple.json file. 
-
 # Register and invoke the simple workflow with GitHub Actions
 
 Now you're ready for some Action! The steps below will:
@@ -287,6 +283,22 @@ Notice that if you browse to these repositories on GitHub, if you select "Action
 
 This repository only holds the actions that were created automatically with the register_workflow FaaSr call, and invoked with invoke_workflow. Feel free to delete these repositories after you finish the tutorial.
 
+# Under the hood - S3 buckets
+
+Note that, in this tutorial, for a quick start, a bucket called faasr is created 
+automatically for you (in Minio Play) as part of the setup script, with the
+minioclient mc_mb command, as follows:
+
+```
+install.packages('minioclient')
+library('minioclient')
+install_mc()
+mc_mb('play/faasr')
+```
+
+
+In general, you will need to secure an S3
+bucket to use with FaaSr. This is covered elsewhere in other documentation.
 
 # (Optional) Using OpenWhisk and AWS Lambda
 
