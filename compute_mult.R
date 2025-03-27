@@ -14,7 +14,7 @@ compute_mult <- function(folder, input1, input2, output) {
   faasr_get_file(remote_folder=folder, remote_file=input1, local_file="input1.csv")
   faasr_get_file(remote_folder=folder, remote_file=input2, local_file="input2.csv")
   
-  # This demo function computes output <- input1 + input2 and stores the output back into S3
+  # This demo function computes output <- input1 * input2 and stores the output back into S3
   # First, read the local inputs, compute the sum, and store the output locally
   # 
   frame_input1 <- read.table("input1.csv", sep=",", header=T)
