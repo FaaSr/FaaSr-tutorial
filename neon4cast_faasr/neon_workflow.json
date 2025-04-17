@@ -1,0 +1,127 @@
+{
+    "ComputeServers": {
+        "My_GitHub_Account": {
+            "FaaSType": "GitHubActions",
+            "UserName": "YOUR_GITHUB_USERNAME",
+            "ActionRepoName": "neon4cast_faasr_actions",
+            "Branch": "main"
+        }
+    },
+    "DataStores": {
+        "My_Minio_Bucket": {
+          "Endpoint": "https://play.min.io",
+            "Bucket": "faasr",
+            "Region": "us-east-1",
+            "Writable": "TRUE"
+        }
+    },
+    "FunctionList": {
+        "getData": {
+            "FunctionName": "get_target_data",
+            "FaaSServer": "My_GitHub_Account",
+            "Arguments": {
+                "folder": "neon4cast",
+                "output_target": "aquatic_full.csv",
+                "output_blinded": "blinded_aquatic.csv"
+            },
+            "InvokeNext": [
+                "oxygenForecastRandomWalk",
+                "temperatureForecastRandomWalk"
+            ]
+        },
+        "oxygenForecastRandomWalk": {
+            "FunctionName": "create_oxygen_forecast_rw",
+            "FaaSServer": "My_GitHub_Account",
+            "Arguments": {
+                "folder": "neon4cast",
+                "input_file": "blinded_aquatic.csv",
+                "output_file": "oxygen_fc_rw.csv"
+            },
+            "InvokeNext": "combineForecastRandomWalk"
+        },
+        "temperatureForecastRandomWalk": {
+            "FunctionName": "create_temperature_forecast_rw",
+            "FaaSServer": "My_GitHub_Account",
+            "Arguments": {
+                "folder": "neon4cast",
+                "input_file": "blinded_aquatic.csv",
+                "output_file": "temperature_fc_rw.csv"
+            },
+            "InvokeNext": "combineForecastRandomWalk"
+        },
+        "combineForecastRandomWalk": {
+            "FunctionName": "combine_forecasts_rw",
+            "FaaSServer": "My_GitHub_Account",
+            "Arguments": {
+                "folder": "neon4cast",
+                "input_oxygen": "oxygen_fc_rw.csv",
+                "input_temperature": "temperature_fc_rw.csv",
+                "output_file": "rw_forecast_combined.csv"
+            }
+        }
+    },
+   "ActionContainers": {
+        "getData": "ghcr.io/faasr/github-actions-tidyverse:1.4.1",
+        "oxygenForecast": "ghcr.io/faasr/github-actions-tidyverse:1.4.1",
+        "temperatureForecast": "ghcr.io/faasr/github-actions-tidyverse:1.4.1",
+        "combineForecast": "ghcr.io/faasr/github-actions-tidyverse:1.4.1"
+    },
+    "FunctionGitRepo": {
+        "get_target_data": "dekkov/neon4cast_faasr",
+        "create_oxygen_forecast_rw": "dekkov/neon4cast_faasr",
+        "create_temperature_forecast_rw": "dekkov/neon4cast_faasr",
+        "combine_forecasts_rw": "dekkov/neon4cast_faasr"
+    },
+    "FunctionInvoke": "getData",
+    "FaaSrLog": "FaaSrLog",
+    "LoggingDataStore": "My_Minio_Bucket",
+    "DefaultDataStore": "My_Minio_Bucket",
+    "FunctionGitHubPackage": {
+        "get_target_data": [
+            "tidyverts/tsibble",
+            "eco4cast/neon4cast"
+        ],
+        "create_oxygen_forecast_rw": [
+            "tidyverts/tsibble",
+            "eco4cast/neon4cast"
+        ],
+        "create_temperature_forecast_rw": [
+            "tidyverts/tsibble",
+            "eco4cast/neon4cast"
+        ],
+        "combine_forecasts_rw": [
+            "tidyverts/tsibble",
+            "eco4cast/neon4cast"
+        ]
+        
+    },
+    "FunctionCRANPackage": {
+        "get_target_data": [
+            "tidyverse",
+            "fable"
+        ],
+        "create_oxygen_forecast_rw": [
+            "neon4cast", 
+            "tidyverse",
+            "tsibble",
+            "fable"
+        ],
+        "create_temperature_forecast_rw": [
+            "neon4cast",
+            "tidyverse",
+            "tsibble",
+            "fable"
+        ],
+        "combine_forecasts_rw": [
+            "tidyverse",
+            "glue"
+        ]
+    },
+    "FunctionGitHubPackage": {
+        "get_target_data": [],
+        "create_oxygen_forecast_rw": [],
+        "create_temperature_forecast_rw": [],
+        "combine_forecasts_rw": []
+    }
+}
+
