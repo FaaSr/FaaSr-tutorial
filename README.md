@@ -98,19 +98,6 @@ If you are using Rstudio natively in your desktop, without Docker (*note: you ma
 source('rstudio_setup_script')
 ```
 
-# Configure Rstudio to use GitHub Token
-
-Within Rstudio, configure the environment to use your GitHub account (replace with your username and email). Input this into the console:
-
-```
-usethis::use_git_config(user.name = "YOUR_GITHUB_USERNAME", user.email = "YOUR_GITHUB_EMAIL")
-```
-
-Now set your GitHub token as a credential for use with Rstudio - paste your token to the pop-up window that opens with this command pasted into the console:
-
-```
-credentials::set_github_pat()
-```
 
 # Configure the FaaSr secrets file with your GitHub token
 

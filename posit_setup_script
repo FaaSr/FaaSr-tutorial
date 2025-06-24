@@ -15,6 +15,9 @@ library('minioclient')
 install_mc()
 mc_mb('play/faasr')
 
+# alternative method of installing curl 
+install.packages("curl", repos = "https://cran.r-project.org/")
+
 # install FaaSr
 install.packages('FaaSr')
 library('FaaSr')
